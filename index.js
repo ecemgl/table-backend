@@ -26,10 +26,10 @@ const sheets = google.sheets({
 const SPREADSHEET_ID = '1OuAOYaDVJOdHc1m9CyTHJ5skmynrhosl1CSxStlH5s8';
 
 app.post('/api/feedback', async (req, res) => { 
-  const { feedback } = req.body;
+  const { feedback , sheetid } = req.body;
   try {
     const response = await sheets.spreadsheets.values.append({
-      spreadsheetId: SPREADSHEET_ID,
+      spreadsheetId: sheetid,
       range: 'A:A', 
       valueInputOption: 'USER_ENTERED',
       resource: {
